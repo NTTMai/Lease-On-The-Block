@@ -2,10 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://NTTMai.github.io/Lease-Demo",
+  "homepage": "https://NTTMai.github.io/Lease-On-The-Block",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NTTMai/Lease-Demo"
+    "url": "https://github.com/NTTMai/Lease-On-The-Block"
   },
   "dependencies": {
     "gh-pages": "^2.2.0",
