@@ -27,10 +27,14 @@ class App extends Component {
   //initial state of variables for BillOfSale Template, and web3,etc
   state = {
     balance: 0,
+    scBalance: 0,
     seller: "",
+    scSeller: "",
     buyer: "",
+    scBuyer: "",
     descr: "",
     price: "",
+    scPrice: "",
     statusMessage: "",
     buyerEmail: "",
     sellerEmail: "",
@@ -241,11 +245,11 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
   };
 
   onFundClick = async () => {
-    const { contract, accounts, web3, price } = this.state;
+    const { contract, accounts, web3, scPrice } = this.state;
     web3.eth.sendTransaction({
       from: accounts[0],
       to: contract.address,
-      value: web3.utils.toWei(price, "ether")
+      value: scPrice
     });
   };
 
@@ -257,19 +261,26 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
   runExample = async () => {
     const { contract, web3 } = this.state;
 
-    const balance = await web3.eth.getBalance(contract.address);
-    const seller = await contract.seller();
-    const buyer = await contract.buyer();
+    const scBalance = await web3.eth.getBalance(contract.address);
+    const scSeller = await contract.seller();
+    const scBuyer = await contract.buyer();
     const descr = await contract.descr();
     const priceBN = await contract.price();
-    const price = priceBN.toString();
+    const scPrice = priceBN.toString();
     const status = await contract.confirmed();
     const statusMessage = this.setStatusMessage(
       status,
-      parseInt(balance),
-      price
+      parseInt(scBalance),
+      scPrice
     );
-    this.setState({ balance, seller, buyer, descr, price, statusMessage });
+    this.setState({
+      scBalance,
+      scSeller,
+      scBuyer,
+      descr,
+      scPrice,
+      statusMessage
+    });
   };
 
   setStatusMessage = (status, balance, price) => {
@@ -372,11 +383,11 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
                 Agreement Status: <strong>{this.state.statusMessage}</strong>
               </div>
               <div>Contract Address: {this.state.contract.address}</div>
-              <div>Contract Balance: {this.state.balance / 10 ** 18}</div>
-              <div>Seller: {this.state.seller}</div>
-              <div>Buyer: {this.state.buyer}</div>
+              <div>Contract Balance: {this.state.scBalance / 10 ** 18}</div>
+              <div>Seller: {this.state.scSeller}</div>
+              <div>Buyer: {this.state.scBuyer}</div>
               <div>Description: {this.state.descr}</div>
-              <div>Price: {this.state.price / 10 ** 18} ETH</div>
+              <div>Price: {this.state.scPrice / 10 ** 18} ETH</div>
               <Button onClick={() => this.onFundClick()}>Fund Contract</Button>
               <Button onClick={() => this.onConfirmClick()}>
                 Confirm Receipts
