@@ -33,6 +33,7 @@ class App extends Component {
     buyer: "",
     scBuyer: "",
     descr: "",
+    scDescr: "",
     price: "",
     scPrice: "",
     statusMessage: "",
@@ -264,7 +265,7 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
     const scBalance = await web3.eth.getBalance(contract.address);
     const scSeller = await contract.seller();
     const scBuyer = await contract.buyer();
-    const descr = await contract.descr();
+    const scDescr = await contract.descr();
     const priceBN = await contract.price();
     const scPrice = priceBN.toString();
     const status = await contract.confirmed();
@@ -277,7 +278,7 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
       scBalance,
       scSeller,
       scBuyer,
-      descr,
+      scDescr,
       scPrice,
       statusMessage
     });
@@ -386,7 +387,7 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
               <div>Contract Balance: {this.state.scBalance / 10 ** 18}</div>
               <div>Seller: {this.state.scSeller}</div>
               <div>Buyer: {this.state.scBuyer}</div>
-              <div>Description: {this.state.descr}</div>
+              <div>Description: {this.state.scDescr}</div>
               <div>Price: {this.state.scPrice / 10 ** 18} ETH</div>
               <Button onClick={() => this.onFundClick()}>Fund Contract</Button>
               <Button onClick={() => this.onConfirmClick()}>
