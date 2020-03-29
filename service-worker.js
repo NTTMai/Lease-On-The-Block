@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Lease-On-The-Block/precache-manifest.d61e5eaaa2d5fd9176555381fb6537dd.js"
+  "/Lease-On-The-Block/precache-manifest.91447b30cd2db3c6711aeac54e1355a6.js"
 );
 
 self.addEventListener('message', (event) => {
