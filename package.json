@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "gh-pages": "^2.2.0",
-    "openlaw": "^0.2.36",
+    "openlaw": "^0.2.39",
     "openlaw-elements": "^1.1.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
