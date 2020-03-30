@@ -238,8 +238,8 @@ as of " OpenLaw v.0.1.29" this function convertUserObject is no longer  needed. 
       this.setState({ draftId });
 
       //uploadContract, this sends a completed contract to "Contract Management", where it can not be edited.
-      // const result = await apiClient.uploadContract(uploadParams);
-      // console.log("results..", result);
+      const result = await apiClient.uploadContract(uploadParams);
+      console.log("results..", result);
     } catch (error) {
       console.log(error);
     }
